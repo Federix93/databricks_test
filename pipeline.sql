@@ -80,7 +80,7 @@ FROM
 CREATE OR REFRESH STREAMING LIVE TABLE transactions_silver(
   CONSTRAINT valid_id EXPECT (transaction_id IS NOT NULL) ON VIOLATION DROP ROW,
   CONSTRAINT valid_operation EXPECT (customer_id IS NOT NULL) ON VIOLATION DROP ROW,
-  CONSTRAINT valid_transaction_type EXPECT (transaction_type IS NOT NULL AND transaction_type NOT IN ('Transfer', 'Refund', 'Purchase'))
+  CONSTRAINT valid_transaction_type EXPECT (transaction_type IS NOT NULL AND transaction_type IN ('Transfer', 'Refund', 'Purchase'))
 )
 TBLPROPERTIES ("quality" = "silver")
 COMMENT "Cleansed bronze transactions view (i.e. what will become Silver)"

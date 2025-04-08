@@ -52,11 +52,11 @@ df.write.format("json").mode("append").save(customers_volume)
 transactions_columns = ['transaction_id', 'customer_id', 'transaction_date', 'amount', 'product_id', 'transaction_type', 'quantity']
 
 data = [
-    ("T001", "C001", "2024-05-20", 199.99, 10101, "New York", "Purchase", 2),
-    ("T002", "C002", "2024-06-15", 349.50, 10102, "Toronto", "Refund", 1),
-    ("T003", "C003", "2024-07-10", 89.00, 10103, "London", "Purchase", 3),
-    ("T004", "C001", "2024-08-01", 120.75, 10104, "Los Angeles", "Unknown", 1),
-    ("T005", "C004", "2024-08-18", 499.99, 10105, "Paris", "Purchase", 5)
+    ("T001", "C001", "2024-05-20", 199.99, 10101, "Purchase", 2),
+    ("T002", "C002", "2024-06-15", 349.50, 10102, "Refund", 1),
+    ("T003", "C003", "2024-07-10", 89.00, 10103, "Purchase", 3),
+    ("T004", "C001", "2024-08-01", 120.75, 10104, "Unknown", 1),
+    ("T005", "C004", "2024-08-18", 499.99, 10105, "Purchase", 5)
 ]
 transactions_volume = "/Volumes/mena/sales/transactions_data_volume"
 df = spark.createDataFrame(data, transactions_columns)
@@ -79,19 +79,3 @@ data = [
 customers_volume = "/Volumes/mena/sales/customers_data_volume"
 df = spark.createDataFrame(data, customers_columns)
 df.write.format("json").mode("append").save(customers_volume)
-
-
-# COMMAND ----------
-
-transactions_columns = ['transaction_id', 'customer_id', 'transaction_date', 'amount', 'product_id', 'transaction_type', 'quantity', 'new_column']
-
-data = [
-    ("T001", "C001", "2024-05-20", 199.99, 10101, "New York", "Purchase", 2, 'value1'),
-    ("T002", "C002", "2024-06-15", 349.50, 10102, "Toronto", "Refund", 1, 'value2'),
-    ("T003", "C003", "2024-07-10", 89.00, 10103, "London", "Purchase", 3, 'value3'),
-    ("T004", "C001", "2024-08-01", 120.75, 10104, "Los Angeles", "Purchase", 1, 'value4'),
-    ("T005", "C004", "2024-08-18", 499.99, 10105, "Paris", "Purchase", 5, 'value5')
-]
-transactions_volume = "/Volumes/mena/sales/transactions_data_volume"
-df = spark.createDataFrame(data, transactions_columns)
-df.write.format("json").mode("append").save(transactions_volume)
