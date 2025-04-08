@@ -265,4 +265,3 @@ transactions_volume = "/Volumes/mena/sales/transactions_data_volume"
 
 customer_df.repartition(100).write.format("json").mode("append").save(customers_volume)
 transaction_df.repartition(100).write.format("json").mode("append").save(transactions_volume)
-

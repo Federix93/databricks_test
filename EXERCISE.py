@@ -54,7 +54,7 @@ transactions_columns = ['transaction_id', 'customer_id', 'transaction_date', 'am
 data = [
     ("T001", "C001", "2024-05-20", 199.99, 10101, "New York", "Purchase", 2),
     ("T002", "C002", "2024-06-15", 349.50, 10102, "Toronto", "Refund", 1),
-    ("T003", "C003", "2024-07-10", 89.00, 10103, "London", None, 3),
+    ("T003", "C003", "2024-07-10", 89.00, 10103, "London", "Purchase", 3),
     ("T004", "C001", "2024-08-01", 120.75, 10104, "Los Angeles", "Unknown", 1),
     ("T005", "C004", "2024-08-18", 499.99, 10105, "Paris", "Purchase", 5)
 ]

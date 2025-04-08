@@ -61,7 +61,8 @@ CREATE OR REFRESH STREAMING LIVE TABLE transactions_bronze (
     amount double, 
     product_id long,
     transaction_type string,
-    quantity long
+    quantity long,
+    _rescued_data string
   ) TBLPROPERTIES ("quality" = "bronze") COMMENT "Transactions data incrementally ingested from cloud object storage landing zone" AS
 SELECT
   *
@@ -69,7 +70,9 @@ FROM
   STREAM read_files(
     "/Volumes/mena/sales/transactions_data_volume",
     format => "json",
-    inferColumnTypes => "true"
+    inferColumnTypes => "true",
+    rescuedDataColumn => "_rescued_data",
+    schemaEvolutionMode => "rescue"
   );
 
 -- COMMAND ----------
